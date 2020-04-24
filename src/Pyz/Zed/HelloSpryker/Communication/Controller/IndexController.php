@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace Pyz\Zed\HelloSpryker\Communication\Controller;
 
@@ -9,6 +9,9 @@ class IndexController extends AbstractController
 {
     public function indexAction(Request $request): array
     {
-        return ['string' => 'Hello Spryker!'];
+        $originalString = 'Hello Spryker!';
+        $reversedString = $this->getFacade()->reverseString($originalString);
+
+        return ['string' => $reversedString];
     }
 }
