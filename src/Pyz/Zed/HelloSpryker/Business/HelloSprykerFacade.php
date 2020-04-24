@@ -7,7 +7,6 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 class HelloSprykerFacade extends AbstractFacade implements HelloSprykerFacadeInterface
 {
-
     public function reverseString(HelloSprykerTransfer $helloSprykerTransfer): HelloSprykerTransfer
     {
         return $this->getFactory()
