@@ -10,7 +10,7 @@ class IndexController extends AbstractController
 {
     public function indexAction(Request $request): View
     {
-        $data = ['helloSpryker' => 'Hello Spryker!'];
+        $data = ['reversedString' => 'Hello Spryker!'];
 
         return $this->view(
             $data,
