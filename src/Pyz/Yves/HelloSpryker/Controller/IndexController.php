@@ -2,6 +2,7 @@
 
 namespace Pyz\Yves\HelloSpryker\Controller;
 
+use Generated\Shared\Transfer\HelloSprykerTransfer;
 use Spryker\Yves\Kernel\Controller\AbstractController;
 use Spryker\Yves\Kernel\View\View;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,7 +11,12 @@ class IndexController extends AbstractController
 {
     public function indexAction(Request $request): View
     {
-        $data = ['reversedString' => 'Hello Spryker!'];
+        $helloSprykerTransfer = new HelloSprykerTransfer();
+        $helloSprykerTransfer->setOriginalString("Hello Spryker!");
+
+        $helloSprykerTransfer = $this->getClient()->reverseString($helloSprykerTransfer);
+
+        $data = ['reversedString' => $helloSprykerTransfer->getReversedString()];
 
         return $this->view(
             $data,
