@@ -1,0 +1,28 @@
+namespace: PyzTest\Zed\PriceImport
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist:
+        include:
+            - ../../../../src/*
+
+suites:
+    Business:
+        path: Business
+        class_name: PriceImportBusinessTester
+        modules:
+            enabled:
+                - \PyzTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Config\Helper\ConfigInit
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                    projectNamespaces: ['Pyz']
+
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper

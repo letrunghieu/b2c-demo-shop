@@ -11,6 +11,7 @@ use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
+use Pyz\Zed\PriceImport\Communication\Console\ReadAndSaveCommand;
 use Pyz\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Pyz\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Spryker\Shared\Config\Environment;
@@ -292,6 +293,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SchedulerResumeConsole(),
 
             new RouterCacheWarmUpConsole(),
+
+            // Commands in training sessions
+            new ReadAndSaveCommand(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
