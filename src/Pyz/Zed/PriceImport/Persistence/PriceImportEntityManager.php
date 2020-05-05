@@ -1,8 +1,9 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace Pyz\Zed\PriceImport\Persistence;
 
 use Generated\Shared\Transfer\PriceImportTransfer;
+use Orm\Zed\PriceImport\Persistence\PyzPriceImport;
 use Orm\Zed\PriceImport\Persistence\PyzPriceImportQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 

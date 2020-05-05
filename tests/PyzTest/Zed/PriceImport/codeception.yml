@@ -19,10 +19,10 @@ suites:
         class_name: PriceImportBusinessTester
         modules:
             enabled:
+                - Asserts
                 - \PyzTest\Shared\Testify\Helper\Environment
-                - \SprykerTest\Shared\Config\Helper\ConfigInit
-                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
-                    projectNamespaces: ['Pyz']
-
-                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
                 - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                        projectNamespaces: ['Pyz']
