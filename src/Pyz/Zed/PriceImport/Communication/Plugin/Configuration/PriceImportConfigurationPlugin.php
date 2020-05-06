@@ -11,6 +11,7 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPlug
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface;
+use SprykerMiddleware\Zed\Report\Communication\Plugin\Hook\ReportPostProcessorHookPlugin;
 
 class PriceImportConfigurationPlugin extends AbstractPlugin implements ProcessConfigurationPluginInterface
 {
@@ -56,6 +57,8 @@ class PriceImportConfigurationPlugin extends AbstractPlugin implements ProcessCo
 
     public function getPostProcessorHookPlugins(): array
     {
-        return [];
+        return [
+            new ReportPostProcessorHookPlugin(),
+        ];
     }
 }
