@@ -180,6 +180,7 @@ $config[KernelConstants::CORE_NAMESPACES] = [
     'SprykerEco',
     'Spryker',
     'SprykerSdk',
+    'SprykerMiddleware',
 ];
 
 $config[UserConstants::USER_SYSTEM_USERS] = [

@@ -130,6 +130,7 @@ use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
+use SprykerMiddleware\Zed\Process\Communication\Console\ProcessConsole;
 use SprykerSdk\Spryk\Console\SprykBuildConsole;
 use SprykerSdk\Spryk\Console\SprykDumpConsole;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
@@ -295,6 +296,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new RouterCacheWarmUpConsole(),
 
             // Commands in training sessions
+            new ProcessConsole(),
             new ReadAndSaveCommand(),
         ];
 
