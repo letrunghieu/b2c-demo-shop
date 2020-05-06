@@ -3,6 +3,9 @@
 namespace Pyz\Zed\PriceImport\Communication\Plugin\Configuration;
 
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\Log\MiddlewareLoggerConfigPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\StreamReaderStagePlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\StreamWriterStagePlugin;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface;
@@ -20,36 +23,39 @@ class PriceImportConfigurationPlugin extends AbstractPlugin implements ProcessCo
 
     public function getInputStreamPlugin(): InputStreamPluginInterface
     {
-        // TODO: Implement getInputStreamPlugin() method.
+        return $this->getFactory()->getPriceImportInputStreamPlugin();
     }
 
     public function getOutputStreamPlugin(): OutputStreamPluginInterface
     {
-        // TODO: Implement getOutputStreamPlugin() method.
+        return $this->getFactory()->getPriceImportOutputStreamPlugin();
     }
 
     public function getIteratorPlugin(): ProcessIteratorPluginInterface
     {
-        // TODO: Implement getIteratorPlugin() method.
+        return $this->getFactory()->getPriceImportIteratorPlugin();
     }
 
     public function getStagePlugins(): array
     {
-        // TODO: Implement getStagePlugins() method.
+        return [
+            new StreamReaderStagePlugin(),
+            new StreamWriterStagePlugin(),
+        ];
     }
 
     public function getLoggerPlugin(): MiddlewareLoggerConfigPluginInterface
     {
-        // TODO: Implement getLoggerPlugin() method.
+        return new MiddlewareLoggerConfigPlugin();
     }
 
     public function getPreProcessorHookPlugins(): array
     {
-        // TODO: Implement getPreProcessorHookPlugins() method.
+        return [];
     }
 
     public function getPostProcessorHookPlugins(): array
     {
-        // TODO: Implement getPostProcessorHookPlugins() method.
+        return [];
     }
 }

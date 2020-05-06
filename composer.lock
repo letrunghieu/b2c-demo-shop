@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37731240e93fcc04c00cf51159364f40",
+    "content-hash": "b0cbea4f12629f4f0b06f020d51ff869",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -4533,6 +4533,48 @@
             ],
             "description": "Process module",
             "time": "2020-04-22T14:00:42+00:00"
+        },
+        {
+            "name": "spryker-middleware/report",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-middleware/report.git",
+                "reference": "249ac14df40b5e455bca0f574f0f0f32ddbf7720"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-middleware/report/zipball/249ac14df40b5e455bca0f574f0f0f32ddbf7720",
+                "reference": "249ac14df40b5e455bca0f574f0f0f32ddbf7720",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-middleware/process": "^1.0.0"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "^2.4",
+                "spryker/architecture-sniffer": "*",
+                "spryker/calculation": "*",
+                "spryker/cart": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*",
+                "spryker/transfer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SprykerMiddleware\\": "src/SprykerMiddleware/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Report module",
+            "time": "2018-10-02T15:55:39+00:00"
         },
         {
             "name": "spryker-shop/agent-page",

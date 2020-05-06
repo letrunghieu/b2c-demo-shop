@@ -13,3 +13,13 @@ __NOTE: instead of `vagrant up` run `VM_PROJECT=suite SPRYKER_REPOSITORY="git@gi
 If you encounter any issues during or after installation, you can first check our Troubleshooting article:
 
 * [Troubleshooting](http://documentation.spryker.com/content/installation/troubleshooting.htm)
+
+## Traning
+
+### Middleware
+
+Run the process with:
+
+```shell script
+docker/sdk console middleware:process:run -p PRICE_IMPORT_PROCESS --input data/import/example.json --flagLogLevel Info
+```
