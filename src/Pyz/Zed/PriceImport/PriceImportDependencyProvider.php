@@ -12,6 +12,7 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonInputStreamPlu
 
 class PriceImportDependencyProvider extends AbstractBundleDependencyProvider
 {
+    public const EVENT_FACADE = 'EVENT_FACADE';
     public const PRICE_IMPORT_MIDDLEWARE_PROCESSES = 'PRICE_IMPORT_MIDDLEWARE_PROCESSES';
     public const PRICE_IMPORT_INPUT_STREAM_PLUGIN = 'PRICE_IMPORT_INPUT_STREAM_PLUGIN';
     public const PRICE_IMPORT_OUTPUT_STREAM_PLUGIN = 'PRICE_IMPORT_OUTPUT_STREAM_PLUGIN';
@@ -19,8 +20,28 @@ class PriceImportDependencyProvider extends AbstractBundleDependencyProvider
 
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
+        $container = parent::provideCommunicationLayerDependencies($container);
+
         $container = $this->addPriceImportProcesses($container);
         $container = $this->addPriceImportProcessPlugins($container);
+
+        return $container;
+    }
+
+    public function provideBusinessLayerDependencies(Container $container)
+    {
+        $container = parent::provideBusinessLayerDependencies($container);
+
+        $container = $this->addEventFacade($container);
+
+        return $container;
+    }
+
+    private function addEventFacade(Container $container): Container
+    {
+        $container[self::EVENT_FACADE] = function (Container $container) {
+            return $container->getLocator()->event()->facade();
+        };
 
         return $container;
     }

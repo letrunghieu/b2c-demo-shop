@@ -3,51 +3,41 @@
 namespace Pyz\Zed\PriceImport\Business\Importer;
 
 use Generated\Shared\Transfer\PriceImportTransfer;
+use Pyz\Zed\PriceImport\Business\Models\Reader\ReaderInterface;
+use Pyz\Zed\PriceImport\Dependency\PriceImportEvents;
 use Pyz\Zed\PriceImport\Persistence\PriceImportEntityManagerInterface;
+use Spryker\Zed\Event\Business\EventFacadeInterface;
 
 class Importer implements ImporterInterface
 {
-    /** @var PriceImportEntityManagerInterface */
-    private $priceImportEntityManager;
+    /** @var EventFacadeInterface */
+    private $eventFacade;
 
-    public function __construct(PriceImportEntityManagerInterface $priceImportEntityManager)
-    {
-        $this->priceImportEntityManager = $priceImportEntityManager;
-    }
-
-    public function import(string $path)
-    {
-        $data = json_decode(file_get_contents($path), true);
-
-        $priceImportTransfers = $this->convertToTransfer($data);
-
-        $this->persist($priceImportTransfers);
-    }
-
-    private function convertToTransfer(array $importedData): array
-    {
-        $results = [];
-
-        foreach ($importedData as $datum) {
-            foreach ($datum['prices'] as $price) {
-                $results[] = (new PriceImportTransfer())
-                    ->setCustomerNumber((int)$datum['customer_number'])
-                    ->setItemNumber((int)$datum['item_number'])
-                    ->setQuantity((int)$price['quantity'])
-                    ->setValue((double)$price['value']);
-            }
-        }
-
-        return $results;
-    }
+    /** @var ReaderInterface */
+    private $reader;
 
     /**
-     * @param PriceImportTransfer[] $priceImportTransfers
+     * Importer constructor.
+     * @param EventFacadeInterface $eventFacade
+     * @param ReaderInterface $reader
      */
-    private function persist(array $priceImportTransfers): void
+    public function __construct(EventFacadeInterface $eventFacade, ReaderInterface $reader)
     {
-        foreach($priceImportTransfers as $transfer) {
-            $this->priceImportEntityManager->persist($transfer);
+        $this->eventFacade = $eventFacade;
+        $this->reader = $reader;
+    }
+
+    public function import(string $path): void
+    {
+        $transfers = $this->reader->parseFile($path);
+
+        foreach ($transfers as $transfer) {
+            $this->notify($transfer);
         }
+    }
+
+    private function notify(PriceImportTransfer $transfer): void
+    {
+        $this->eventFacade->trigger(PriceImportEvents::PRICE_PARSED, $transfer);
     }
 }
