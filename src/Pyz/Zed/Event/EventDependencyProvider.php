@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Event;
 
+use Pyz\Zed\CustomerPrice\Communication\Plugin\Event\Subscriber\CustomerPriceEventSubscriber;
 use Pyz\Zed\ProductStorage\Communication\Plugin\Event\Subscriber\ProductStorageEventSubscriber;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Event\Subscriber\AvailabilityNotificationSubscriber;
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\Subscriber\AvailabilityStorageEventSubscriber;
@@ -116,6 +117,11 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductConcretePageSearchProductAbstractEventSubscriber());
         $eventSubscriberCollection->add(new ProductConcretePageSearchProductEventSubscriber());
         $eventSubscriberCollection->add(new ProductConcretePageSearchProductLocalizedAttributesEventSubscriber());
+
+        /**
+         * Training
+         */
+        $eventSubscriberCollection->add(new CustomerPriceEventSubscriber());
 
         return $eventSubscriberCollection;
     }

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Console;
 
+use Pyz\Zed\CustomerPrice\Communication\Console\CustomerPriceConsole;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
@@ -292,6 +293,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SchedulerResumeConsole(),
 
             new RouterCacheWarmUpConsole(),
+
+            // training
+            new CustomerPriceConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
