@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Queue;
 
+use Pyz\Zed\CustomerPriceStorage\CustomerPriceStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
 use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
@@ -61,6 +62,9 @@ class QueueDependencyProvider extends SprykerDependencyProvider
             TaxStorageConfig::TAX_SET_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             TaxProductStorageConfig::PRODUCT_ABSTRACT_TAX_SET_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             ContentStorageConfig::CONTENT_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
+
+            // training
+            CustomerPriceStorageConfig::CUSTOMER_PRICE_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
         ];
     }
 }

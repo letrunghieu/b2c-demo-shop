@@ -9,6 +9,7 @@ namespace Pyz\Client\RabbitMq;
 
 use ArrayObject;
 use Generated\Shared\Transfer\RabbitMqOptionTransfer;
+use Pyz\Zed\CustomerPriceStorage\CustomerPriceStorageConfig;
 use Spryker\Client\RabbitMq\Model\Connection\Connection;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
@@ -61,6 +62,13 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             $this->createQueueOption(
                 $this->get(LogConstants::LOG_QUEUE_NAME),
                 $this->get(LogConstants::LOG_ERROR_QUEUE_NAME)
+            )
+        );
+
+        $queueOptionCollection->append(
+            $this->createQueueOption(
+                CustomerPriceStorageConfig::CUSTOMER_PRICE_SYNC_STORAGE_QUEUE,
+                CustomerPriceStorageConfig::CUSTOMER_PRICE_SYNC_STORAGE_ERROR_QUEUE
             )
         );
 
