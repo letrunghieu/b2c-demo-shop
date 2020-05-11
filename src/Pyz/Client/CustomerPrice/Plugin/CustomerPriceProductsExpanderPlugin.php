@@ -10,7 +10,7 @@ use Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpander
 
 /**
  * @method CustomerPriceFactory getFactory()
- */
+ *
  */
 class CustomerPriceProductsExpanderPlugin extends AbstractPlugin implements ProductViewExpanderPluginInterface
 {
