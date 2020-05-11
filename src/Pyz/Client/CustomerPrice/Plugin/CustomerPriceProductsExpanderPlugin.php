@@ -11,14 +11,13 @@ use Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpander
 /**
  * @method CustomerPriceFactory getFactory()
  */
+ */
 class CustomerPriceProductsExpanderPlugin extends AbstractPlugin implements ProductViewExpanderPluginInterface
 {
 
     public function expandProductViewTransfer(ProductViewTransfer $productViewTransfer, array $productData, $localeName)
     {
         $customerNumber = $this->getCustomerNumber();
-
-        dd($productViewTransfer);
 
         $customerPrice = $this->getFactory()
             ->createStorageReader()
@@ -27,8 +26,6 @@ class CustomerPriceProductsExpanderPlugin extends AbstractPlugin implements Prod
         $prices = array_map(function(CustomerPriceValueTransfer $transfer) {
             return (int)round($transfer->getPrice() * 100);
         }, $customerPrice->getValues()->getArrayCopy());
-
-//        dd($prices);
 
         if (empty($prices)) {
             return $productViewTransfer;

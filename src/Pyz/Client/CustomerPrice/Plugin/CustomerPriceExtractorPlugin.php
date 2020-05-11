@@ -33,8 +33,6 @@ class CustomerPriceExtractorPlugin extends AbstractPlugin implements PriceProduc
             ->createStorageReader()
             ->getPrices($customerNumber, 'How to get items number here?');
 
-        dd($priceProductTransfers);
-
         foreach ($priceProductTransfers as $transfer) {
             $priceValue = (int) round($customerPrice->getValues()[0]->getPrice() * 100);
             $transfer->getMoneyValue()
