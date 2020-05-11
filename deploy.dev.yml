@@ -1,4 +1,4 @@
-version: "0.1"
+version: "0.2"
 
 namespace: spryker_b2c_dev
 tag: 'dev'
@@ -134,9 +134,16 @@ services:
                 protocol: tcp
     search:
         engine: elastic
+        version: 6.8
         endpoints:
             localhost:9200:
                 protocol: tcp
+    kibana:
+        engine: kibana
+        version: 6.8
+        endpoints:
+            localhost:5601:
+                protocola: tcp
     scheduler:
         engine: jenkins
         endpoints:
