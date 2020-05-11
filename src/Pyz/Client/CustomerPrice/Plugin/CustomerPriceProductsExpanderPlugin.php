@@ -18,9 +18,11 @@ class CustomerPriceProductsExpanderPlugin extends AbstractPlugin implements Prod
     {
         $customerNumber = $this->getCustomerNumber();
 
+        dd($productViewTransfer);
+
         $customerPrice = $this->getFactory()
             ->createStorageReader()
-            ->getPrices($customerNumber, (string) $productViewTransfer->getIdProductConcrete());
+            ->getPrices($customerNumber, (string) $productViewTransfer->getSku());
 
         $prices = array_map(function(CustomerPriceValueTransfer $transfer) {
             return (int)round($transfer->getPrice() * 100);
