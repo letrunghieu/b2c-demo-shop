@@ -13,9 +13,9 @@ use Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoad
 class CustomerPricePageDataLoaderPlugin extends AbstractPlugin implements ProductPageDataLoaderPluginInterface
 {
 
-    public function expandProductPageDataTransfer(ProductPageLoadTransfer $loadTransfer)
+    public function expandProductPageDataTransfer(ProductPageLoadTransfer $loadTransfer): ProductPageLoadTransfer
     {
-        $this->getFacade()
+        return $this->getFacade()
             ->expandProductPageLoadTransferWithPriceData($loadTransfer);
     }
 }

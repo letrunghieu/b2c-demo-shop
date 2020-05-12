@@ -7,7 +7,9 @@
 
 namespace Pyz\Zed\ProductPageSearch;
 
+use Pyz\Zed\CustomerPrice\Communication\Plugin\PageDataExpander\CustomerPricePageDataLoaderExpanderPlugin;
 use Pyz\Zed\CustomerPrice\Communication\Plugin\PageDataLoader\CustomerPricePageDataLoaderPlugin;
+use Pyz\Zed\CustomerPrice\Communication\Plugin\ProductPageSearch\ElasticSearch\CustomerPriceMapExpanderPlugin;
 use Spryker\Shared\ProductLabelSearch\ProductLabelSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Shared\ProductReviewSearch\ProductReviewSearchConfig;
@@ -44,6 +46,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
         $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_CATEGORY_PAGE_DATA] = new ProductCategoryPageDataLoaderExpanderPlugin();
         $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_PRICE_PAGE_DATA] = new PricePageDataLoaderExpanderPlugin();
         $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_IMAGE_PAGE_DATA] = new ProductImagePageDataLoaderExpanderPlugin();
+        $dataExpanderPlugins['PLUGIN_CUSTOMER_PRICE_PAGE_DATA'] = new CustomerPricePageDataLoaderExpanderPlugin();
 
         return $dataExpanderPlugins;
     }
@@ -69,6 +72,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getProductAbstractMapExpanderPlugins(): array
     {
         return [
+            new CustomerPriceMapExpanderPlugin(),
             new ProductPriceMapExpanderPlugin(),
             new ProductCategoryMapExpanderPlugin(),
             new ProductImageMapExpanderPlugin(),

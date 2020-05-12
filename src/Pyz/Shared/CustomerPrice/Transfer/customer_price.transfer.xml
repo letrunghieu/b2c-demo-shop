@@ -23,4 +23,12 @@
         <property name="customerPrices" type="ProductCustomerPricePayload[]" />
     </transfer>
 
+    <transfer name="ProductPageSearch">
+        <property name="customerPrices" type="ProductCustomerPricePayload[]" />
+        <property name="customerPriceCustomerNumbers" type="string[]" />
+    </transfer>
+
+    <transfer name="PageMap">
+        <property name="customerPrices" type="array" />
+    </transfer>
 </transfers>
