@@ -3,6 +3,7 @@
 namespace Pyz\Zed\CustomerPrice\Business;
 
 use Generated\Shared\Transfer\CustomerPriceTransfer;
+use Generated\Shared\Transfer\ProductPageLoadTransfer;
 
 interface CustomerPriceFacadeInterface
 {
@@ -13,4 +14,6 @@ interface CustomerPriceFacadeInterface
      * @return CustomerPriceTransfer[]
      */
     public function parseFile(string $path): array;
+
+    public function expandProductPageLoadTransferWithPriceData(ProductPageLoadTransfer $productPageLoadTransfer): ProductPageLoadTransfer;
 }

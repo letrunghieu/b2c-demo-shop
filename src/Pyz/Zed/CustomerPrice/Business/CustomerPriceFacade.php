@@ -3,6 +3,7 @@
 namespace Pyz\Zed\CustomerPrice\Business;
 
 use Generated\Shared\Transfer\CustomerPriceTransfer;
+use Generated\Shared\Transfer\ProductPageLoadTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -13,11 +14,22 @@ class CustomerPriceFacade extends AbstractFacade implements CustomerPriceFacadeI
     /**
      * @inheritDoc
      */
-    public function parseFile(string $path): array {
+    public function parseFile(string $path): array
+    {
         return $this->getFactory()->createReader()->parseFile($path);
     }
 
-    public function saveCustomerPrice(CustomerPriceTransfer $customerPriceTransfer): void {
+    public function saveCustomerPrice(CustomerPriceTransfer $customerPriceTransfer): void
+    {
         $this->getFactory()->createWriter()->write($customerPriceTransfer);
+    }
+
+    public function expandProductPageLoadTransferWithPriceData(
+        ProductPageLoadTransfer $productPageLoadTransfer
+    ): ProductPageLoadTransfer
+    {
+        return $this->getFactory()
+            ->createCustomerPriceProductPageExpander()
+            ->expandProductPageLoadTransferWithPricesData($productPageLoadTransfer);
     }
 }

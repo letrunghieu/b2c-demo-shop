@@ -9,4 +9,10 @@ interface CustomerPriceRepositoryInterface
 {
 
     public function findOrCreateCustomerPriceEntitiesByCustomerItemAndQuantity(string $customerNumber, string $itemNumber, int $quantity): PyzCustomerPriceEntityTransfer;
+
+    /**
+     * @param string[] $ids
+     * @return PyzCustomerPriceEntityTransfer[]
+     */
+    public function findCustomerPricesByItemIds(array $ids): array;
 }

@@ -2,6 +2,8 @@
 
 namespace Pyz\Zed\CustomerPrice\Business;
 
+use Pyz\Zed\CustomerPrice\Business\Model\Expander\CustomerPriceProductPageExpander;
+use Pyz\Zed\CustomerPrice\Business\Model\Expander\CustomerPriceProductPageExpanderInterface;
 use Pyz\Zed\CustomerPrice\Business\Model\Reader\JsonReader;
 use Pyz\Zed\CustomerPrice\Business\Model\Reader\ReaderInterface;
 use Pyz\Zed\CustomerPrice\Business\Model\Writer\DefaultWriter;
@@ -27,6 +29,13 @@ class CustomerPriceBusinessFactory extends AbstractBusinessFactory
         return new DefaultWriter(
             $this->getRepository(),
             $this->getEntityManager()
+        );
+    }
+
+    public function createCustomerPriceProductPageExpander(): CustomerPriceProductPageExpanderInterface
+    {
+        return new CustomerPriceProductPageExpander(
+            $this->getRepository()
         );
     }
 }

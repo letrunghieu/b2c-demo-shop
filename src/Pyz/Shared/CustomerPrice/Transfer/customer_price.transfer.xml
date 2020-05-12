@@ -14,4 +14,13 @@
         <property name="values" type="CustomerPriceValue[]" />
     </transfer>
 
+    <transfer name="ProductCustomerPricePayload">
+        <property name="customerNumber" type="string" />
+        <property name="price" type="int" />
+    </transfer>
+
+    <transfer name="ProductPayload">
+        <property name="customerPrices" type="ProductCustomerPricePayload[]" />
+    </transfer>
+
 </transfers>

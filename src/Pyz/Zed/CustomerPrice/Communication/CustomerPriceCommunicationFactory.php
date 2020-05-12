@@ -2,6 +2,8 @@
 
 namespace Pyz\Zed\CustomerPrice\Communication;
 
+use Pyz\Zed\CustomerPrice\Business\Model\Expander\CustomerPriceProductPageExpander;
+use Pyz\Zed\CustomerPrice\Business\Model\Expander\CustomerPriceProductPageExpanderInterface;
 use Pyz\Zed\CustomerPrice\CustomerPriceDependencyProvider;
 use Spryker\Zed\Event\Business\EventFacadeInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;

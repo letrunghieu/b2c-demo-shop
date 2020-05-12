@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductPageSearch;
 
+use Pyz\Zed\CustomerPrice\Communication\Plugin\PageDataLoader\CustomerPricePageDataLoaderPlugin;
 use Spryker\Shared\ProductLabelSearch\ProductLabelSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Shared\ProductReviewSearch\ProductReviewSearchConfig;
@@ -56,6 +57,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ImagePageDataLoaderPlugin(),
             new CategoryPageDataLoaderPlugin(),
             new PriceProductPageDataLoaderPlugin(),
+            new CustomerPricePageDataLoaderPlugin(),
             new ProductLabelDataLoaderPlugin(),
             new ProductReviewPageDataLoaderPlugin(),
         ];

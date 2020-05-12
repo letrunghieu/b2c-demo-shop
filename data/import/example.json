@@ -1,7 +1,7 @@
 [
   {
-    "customer_number": "27",
-    "item_number": "30",
+    "customer_number": "22",
+    "item_number": "115",
     "prices": [
       {
         "quantity": 1,
@@ -18,7 +18,7 @@
     ]
   },
   {
-    "customer_number": "27",
+    "customer_number": "22",
     "item_number": "31",
     "prices": [
       {
@@ -28,7 +28,7 @@
     ]
   },
   {
-    "customer_number": "28",
+    "customer_number": "22",
     "item_number": "30",
     "prices": [
       {
