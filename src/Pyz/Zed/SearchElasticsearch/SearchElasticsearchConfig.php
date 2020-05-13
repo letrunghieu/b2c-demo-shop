@@ -14,6 +14,7 @@ use Spryker\Zed\SearchElasticsearch\SearchElasticsearchConfig as SprykerSearchEl
  */
 class SearchElasticsearchConfig extends SprykerSearchElasticsearchConfig
 {
+
     /**
      * @return array
      */

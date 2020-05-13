@@ -11,6 +11,8 @@ use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConfig as SprykerSearc
 
 class SearchElasticsearchConfig extends SprykerSearchElasticsearchConfig
 {
+    public const FACET_TYPE_CUSTOMER_PRICES = 'CUSTOMER_PRICES';
+
     protected const SUPPORTED_SOURCE_IDENTIFIERS = [
         'page',
         'product-review',
